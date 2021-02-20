@@ -73,7 +73,7 @@ class SoalController extends Controller
      */
     public function edit(Soal $soal)
     {
-        //
+        return view('soals.edit',compact('soal'));
     }
 
     /**
@@ -85,7 +85,19 @@ class SoalController extends Controller
      */
     public function update(Request $request, Soal $soal)
     {
-        //
+        $request->validate([
+            'soal' => 'required',
+            'jawaban_a' => 'required',
+            'jawaban_b' => 'required',
+            'jawaban_c' => 'required',
+            'jawaban_d' => 'required',
+            'jawaban_benar' => 'required',
+        ]);
+
+        $soal->update($request->all());
+
+        return redirect()->route('soals.index')
+                        ->with('success','Data Berhasil di Hapus');
     }
 
     /**
