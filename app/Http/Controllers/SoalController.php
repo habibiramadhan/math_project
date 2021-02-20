@@ -14,7 +14,10 @@ class SoalController extends Controller
      */
     public function index()
     {
-        //
+        $soals = Soal::latest()->paginate(10);
+  
+        return view('admin.soal.index',compact('soals'))
+            ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
     /**
@@ -35,7 +38,19 @@ class SoalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'soal' => 'required',
+            'jawaban_a' => 'required',
+            'jawaban_b' => 'required',
+            'jawaban_c' => 'required',
+            'jawaban_d' => 'required',
+            'jawaban_benar' => 'required',
+        ]);
+  
+        Soal::create($request->all());
+   
+        return redirect()->route('admin.soal.index')
+                        ->with('success','Soal Behasil Di buat');
     }
 
     /**
@@ -80,6 +95,9 @@ class SoalController extends Controller
      */
     public function destroy(Soal $soal)
     {
-        //
+        $soal->delete();
+  
+        return redirect()->route('admin.soal.index')
+                        ->with('success','soal berhasil dihapus');
     }
 }
