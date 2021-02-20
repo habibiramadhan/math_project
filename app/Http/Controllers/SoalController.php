@@ -73,7 +73,7 @@ class SoalController extends Controller
      */
     public function edit(Soal $soal)
     {
-        return view('soals.edit',compact('soal'));
+        return view('admin.soal.edit',compact('soal'));
     }
 
     /**
