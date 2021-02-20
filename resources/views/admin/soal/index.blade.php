@@ -3,7 +3,7 @@
     <!-- BEGIN: Head -->
     <head>
         <meta charset="utf-8">
-        <title>Category MTK</title>
+        <title>Soal</title>
         <!-- BEGIN: CSS Assets-->
         <link rel="stylesheet" href="{{ asset('dist/css/app.css') }}" />
         <!-- END: CSS Assets-->
@@ -91,21 +91,21 @@
                                 <tr class="intro-x">
                                     <td class="w-40">
                                         <div class="flex">
-                                            {{$soal->id}}
+                                            {{ ++$i }}
                                         </div>
                                     </td>
                                     <td>
                                         <p class="font-medium whitespace-no-wrap">{{$soal->soal}}</p>
                                     </td>
-                                    {{-- <td class="table-report__action w-56">
+                                    <td class="table-report__action w-56">
                                         <div class="flex justify-center items-center">
-                                            <a class="flex items-center mr-3" href="{{ route('categories.edit', $category->id) }}"> <i data-feather="check-square" class="w-4 h-4 mr-1"></i> Edit </a>
-
-                                            {!! Form::open(['route' => ['categories.destroy', $category->id], 'method' => 'delete', 'style' => 'display:inline']) !!}
+                                            <a class="flex items-center mr-3" href="{{ route('soals.edit', $soal->id) }}"> <i data-feather="check-square" class="w-4 h-4 mr-1"></i> Edit </a>
+                                            
+                                            {!! Form::open(['route' => ['soals.destroy', $soal->id], 'method' => 'delete', 'style' => 'display:inline']) !!}
                                             <button type="submit" name="Delete" class="flex items-center text-theme-6" onClick="return confirm('Are you sure?')"> <i data-feather="trash-2" class="w-4 h-4 mr-1"></i>Delete </button>
                                             {!! Form::close() !!}
                                         </div>
-                                    </td> --}}
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Soal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class SoalController extends Controller
 {
@@ -49,7 +50,7 @@ class SoalController extends Controller
   
         Soal::create($request->all());
    
-        return redirect()->route('admin.soal.index')
+        return redirect()->route('soals.index')
                         ->with('success','Soal Behasil Di buat');
     }
 
@@ -96,8 +97,8 @@ class SoalController extends Controller
     public function destroy(Soal $soal)
     {
         $soal->delete();
-  
-        return redirect()->route('admin.soal.index')
-                        ->with('success','soal berhasil dihapus');
+
+        Session::flash('delete-message', 'Soal deleted successfully');
+        return redirect()->route('soals.index');
     }
 }
