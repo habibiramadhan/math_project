@@ -20,7 +20,7 @@ class CreateSoalsTable extends Migration
             $table->text('jawaban_b');
             $table->text('jawaban_c');
             $table->text('jawaban_d');
-            $table->text('jawaban_c');
+            $table->text('jawaban_benar');
             $table->timestamps();
         });
     }
