@@ -27,7 +27,7 @@ class SoalController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.soal.create');
     }
 
     /**
